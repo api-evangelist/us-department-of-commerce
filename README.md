@@ -1,42 +1,94 @@
-# US Department of Commerce (us-department-of-commerce)
-The US Department of Commerce is responsible for promoting economic growth and job creation in the United States. It oversees various programs and initiatives aimed at supporting businesses, industries, and communities across the country. The department works to ensure fair trade practices, protect intellectual property, and promote innovation and entrepreneurship. It also collects and analyzes economic data to inform policy decisions and help businesses make informed decisions. Additionally, the Department of Commerce plays a key role in promoting global trade and investment, advocating for American businesses abroad, and fostering strong relationships with international partners.
+# US Department of Commerce
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/us-department-of-commerce/refs/heads/main/apis.yml)
+The US Department of Commerce is responsible for promoting economic growth and job creation in the United States. It oversees various programs and initiatives aimed at supporting businesses, industries, and communities across the country. The department works to ensure fair trade practices, protect intellectual property, and promote innovation and entrepreneurship. It also collects and analyzes economic data to inform policy decisions and help businesses make informed decisions. The Commerce Department houses bureaus including the Census Bureau, Bureau of Economic Analysis, International Trade Administration, NOAA, and NIST, each offering public APIs for their respective data domains.
+
+**URL:** [https://www.commerce.gov](https://www.commerce.gov)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Contract
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Federal Government, Commerce
+`Commerce` `Federal Government` `Open Data` `Trade` `Economic Data` `Climate` `Standards`
 
 ## Timestamps
 
-- **Created:** 2024-12-03 
-- **Modified:** 2025-01-04 
+- **Created:** 2024-12-03
+- **Modified:** 2026-05-03
 
 ## APIs
 
-### US Department of Commerce
-11/9/2018 - News v2.0, Blogs v2.0, Image v2.0: Complete rewrite of the API to reflect the redesign of the Commerce.gov D8 website. API endpoints - news, blogs and image and their response fields preserved for backward compatibility.
+| API | Description |
+|-----|-------------|
+| [Commerce.gov API](https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api) | Content API for news, blog posts, and images on Commerce.gov |
+| [US Census Bureau Data API](https://www.census.gov/data/developers/data-sets.html) | Demographic, economic, and geographic datasets |
+| [Bureau of Economic Analysis API](https://apps.bea.gov/API/signup/) | GDP, national accounts, and economic statistics |
+| [International Trade Administration API](https://developer.trade.gov/) | Trade data, screening lists, and export information |
+| [NOAA Climate and Weather API](https://www.ncdc.noaa.gov/cdo-web/webservices/v2) | Climate and weather data from NOAA/NCEI |
+| [NIST Data Discovery API](https://data.nist.gov/pdr/lps/) | NIST research datasets and standards |
+| [Commerce Data Hub Open Data Portal API](https://data.commerce.gov/open-data-portal-odp-api-version-23) | Commerce Department open data catalog |
 
-**Human URL:** [https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api](https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api)
+## OpenAPI Specifications
 
+| Spec | Description |
+|------|-------------|
+| [Commerce.gov API](openapi/commerce-gov-api-openapi.yml) | OpenAPI 3.0 spec for news, blogs, and images |
 
-#### Tags:
+## Spectral Rules
 
- - API
+| Ruleset | Description |
+|---------|-------------|
+| [Commerce.gov API Rules](rules/commerce-gov-api-rules.yml) | Spectral rules enforcing Commerce.gov API conventions |
 
-#### Properties
+## Naftiko Capabilities
 
-- [Documentation](https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api)
+### Workflow Capabilities
+
+| Capability | Description |
+|------------|-------------|
+| [Commerce Content](capabilities/commerce-content.yaml) | Monitor Commerce Department news and blog content |
+
+### Shared API Definitions
+
+| Shared Definition | Description |
+|-------------------|-------------|
+| [Commerce.gov API](capabilities/shared/commerce-gov-api.yaml) | Shared definition for Commerce.gov content API |
+
+## JSON Schema
+
+| Schema | Description |
+|--------|-------------|
+| [News Article](json-schema/commerce-gov-news-article-schema.json) | Schema for Commerce.gov news articles |
+
+## JSON Structure
+
+| Structure | Description |
+|-----------|-------------|
+| [News Article Structure](json-structure/commerce-gov-news-article-structure.json) | Field documentation for news articles |
+
+## JSON-LD
+
+| Context | Description |
+|---------|-------------|
+| [Commerce Context](json-ld/us-department-of-commerce-context.jsonld) | Linked data context mapping Commerce terms to schema.org |
+
+## Examples
+
+| Example | Description |
+|---------|-------------|
+| [List News Example](examples/commerce-gov-list-news-example.json) | Example response for listing news articles |
+
+## Vocabulary
+
+| Vocabulary | Description |
+|------------|-------------|
+| [Commerce Vocabulary](vocabulary/us-department-of-commerce-vocabulary.yml) | Domain vocabulary for Commerce Department data |
 
 ## Maintainers
 
 **FN:** Kin Lane
 
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com

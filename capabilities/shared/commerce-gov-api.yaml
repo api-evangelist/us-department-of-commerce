@@ -1,0 +1,250 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Commerce.gov API"
+  description: "Content API for news, blog posts, and images published on the US Department of Commerce website."
+  tags:
+    - Commerce
+    - News
+    - Blogs
+    - Federal Government
+    - Open Data
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys: {}
+
+capability:
+  consumes:
+    - type: http
+      namespace: commerce-gov
+      baseUri: https://www.commerce.gov
+      description: "Content API for Commerce.gov news, blogs, and images"
+      resources:
+        - name: news
+          path: /api/news
+          description: "News articles published on Commerce.gov"
+          operations:
+            - name: list-news
+              method: GET
+              description: "List news articles"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number for pagination"
+                - name: items_per_page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of items per page"
+                - name: sort_order
+                  in: query
+                  type: string
+                  required: false
+                  description: "Sort direction (ASC or DESC)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-news-article
+              method: GET
+              description: "Get a specific news article by ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "News article identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: blogs
+          path: /api/blog
+          description: "Blog posts published on Commerce.gov"
+          operations:
+            - name: list-blogs
+              method: GET
+              description: "List blog posts"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number for pagination"
+                - name: items_per_page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of items per page"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-blog-post
+              method: GET
+              description: "Get a specific blog post by ID"
+              inputParameters:
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Blog post identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: images
+          path: /api/image
+          description: "Images published on Commerce.gov"
+          operations:
+            - name: list-images
+              method: GET
+              description: "List images"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number for pagination"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: commerce-gov-rest
+      resources:
+        - path: /v1/news
+          name: news
+          description: "Commerce.gov news articles"
+          operations:
+            - method: GET
+              name: list-news
+              description: "List news articles from Commerce.gov"
+              call: "commerce-gov.list-news"
+              with:
+                page: "rest.page"
+                items_per_page: "rest.items_per_page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/news/{id}
+          name: news-item
+          description: "Single Commerce.gov news article"
+          operations:
+            - method: GET
+              name: get-news-article
+              description: "Get a specific news article"
+              call: "commerce-gov.get-news-article"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/blogs
+          name: blogs
+          description: "Commerce.gov blog posts"
+          operations:
+            - method: GET
+              name: list-blogs
+              description: "List blog posts from Commerce.gov"
+              call: "commerce-gov.list-blogs"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/blogs/{id}
+          name: blog-item
+          description: "Single Commerce.gov blog post"
+          operations:
+            - method: GET
+              name: get-blog-post
+              description: "Get a specific blog post"
+              call: "commerce-gov.get-blog-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/images
+          name: images
+          description: "Commerce.gov images"
+          operations:
+            - method: GET
+              name: list-images
+              description: "List images from Commerce.gov"
+              call: "commerce-gov.list-images"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: commerce-gov-mcp
+      transport: http
+      tools:
+        - name: list-commerce-news
+          description: "List news articles from Commerce.gov"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-news"
+          with:
+            page: "tools.page"
+            items_per_page: "tools.items_per_page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commerce-news-article
+          description: "Get a specific Commerce.gov news article by ID"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "commerce-gov.get-news-article"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-commerce-blogs
+          description: "List blog posts from Commerce.gov"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-blogs"
+          with:
+            page: "tools.page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commerce-blog-post
+          description: "Get a specific Commerce.gov blog post by ID"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "commerce-gov.get-blog-post"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-commerce-images
+          description: "List images from Commerce.gov"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-images"
+          outputParameters:
+            - type: object
+              mapping: "$."

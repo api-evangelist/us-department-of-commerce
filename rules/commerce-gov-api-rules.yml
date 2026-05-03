@@ -1,0 +1,96 @@
+extends: spectral:oas
+rules:
+  commerce-operation-ids-camel-case:
+    description: Operation IDs must use camelCase naming
+    message: Operation ID "{{value}}" should use camelCase (e.g., listNews, getBlogPost)
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  commerce-response-200-present:
+    description: All operations should define a 200 response
+    message: Operation is missing a 200 OK response
+    severity: warn
+    given: "$.paths[*][get,post,put,patch]"
+    then:
+      field: responses.200
+      function: truthy
+
+  commerce-path-kebab-case:
+    description: API paths must use kebab-case for path segments
+    message: Path segment "{{value}}" should use kebab-case
+    severity: warn
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(\\/([a-z][a-z0-9-]*|\\{[a-zA-Z][a-zA-Z0-9_]*\\}))*$"
+
+  commerce-operations-have-summaries:
+    description: All operations must have a summary
+    message: Operation is missing a summary
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  commerce-operations-have-tags:
+    description: All operations should have at least one tag
+    message: Operation is missing tags
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  commerce-pagination-params-consistent:
+    description: List operations should use consistent pagination parameters
+    message: List operations should support page and items_per_page parameters
+    severity: info
+    given: "$.paths[*][get]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  commerce-response-schema-defined:
+    description: Successful responses should reference a schema
+    message: Response 200 should define a content schema
+    severity: warn
+    given: "$.paths[*][get].responses.200"
+    then:
+      field: content
+      function: truthy
+
+  commerce-info-contact-present:
+    description: API info should include contact information
+    message: API info is missing contact details
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  commerce-servers-defined:
+    description: API must define at least one server
+    message: No servers defined in the API specification
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  commerce-tags-title-case:
+    description: Tags must use Title Case naming
+    message: Tag "{{value}}" should use Title Case (e.g., "News", "Blog Posts")
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"

@@ -1,0 +1,169 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "US Department of Commerce Content"
+  description: >-
+    Workflow capability for accessing US Department of Commerce news, blog posts,
+    and media content. Useful for journalists, researchers, policy analysts, and
+    citizens who need to monitor Commerce Department announcements, economic
+    reports, and agency updates.
+  tags:
+    - Commerce
+    - Federal Government
+    - News
+    - Content
+    - Open Data
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys: {}
+
+capability:
+  consumes:
+    - import: commerce-gov
+      location: ./shared/commerce-gov-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: commerce-content-api
+      description: "Unified REST API for accessing US Department of Commerce content."
+      resources:
+        - path: /v1/news
+          name: news
+          description: "Latest news from the US Department of Commerce"
+          operations:
+            - method: GET
+              name: list-news
+              description: "List recent Commerce Department news articles"
+              call: "commerce-gov.list-news"
+              with:
+                page: "rest.page"
+                items_per_page: "rest.items_per_page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/news/{id}
+          name: news-item
+          description: "Single Commerce Department news article"
+          operations:
+            - method: GET
+              name: get-news-article
+              description: "Get a specific Commerce Department news article"
+              call: "commerce-gov.get-news-article"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/blogs
+          name: blogs
+          description: "Blog posts from Commerce Department officials and bureaus"
+          operations:
+            - method: GET
+              name: list-blogs
+              description: "List Commerce Department blog posts"
+              call: "commerce-gov.list-blogs"
+              with:
+                page: "rest.page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/blogs/{id}
+          name: blog-item
+          description: "Single Commerce Department blog post"
+          operations:
+            - method: GET
+              name: get-blog-post
+              description: "Get a specific Commerce Department blog post"
+              call: "commerce-gov.get-blog-post"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/images
+          name: images
+          description: "Media images from Commerce Department"
+          operations:
+            - method: GET
+              name: list-images
+              description: "List Commerce Department images"
+              call: "commerce-gov.list-images"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: commerce-content-mcp
+      transport: http
+      description: "MCP server for AI-assisted monitoring of US Department of Commerce announcements and content."
+      tools:
+        - name: list-commerce-news
+          description: >-
+            List recent news articles from the US Department of Commerce.
+            Use to monitor agency announcements, trade policy updates, economic reports,
+            and bureau news from NOAA, Census, BEA, ITA, and NIST.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-news"
+          with:
+            page: "tools.page"
+            items_per_page: "tools.items_per_page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commerce-news-article
+          description: >-
+            Get the full text of a specific Commerce Department news article by ID.
+            Returns title, body, date, tags, and featured image.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "commerce-gov.get-news-article"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-commerce-blog-posts
+          description: >-
+            List blog posts from Commerce Department officials and bureaus.
+            Blog posts provide policy commentary, program updates, and feature stories.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-blogs"
+          with:
+            page: "tools.page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-commerce-blog-post
+          description: >-
+            Get the full content of a specific Commerce Department blog post.
+            Returns author, body text, date, and topic tags.
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "commerce-gov.get-blog-post"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-commerce-images
+          description: >-
+            List images and media assets published by the Commerce Department.
+            Useful for finding official images for news stories and publications.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "commerce-gov.list-images"
+          outputParameters:
+            - type: object
+              mapping: "$."

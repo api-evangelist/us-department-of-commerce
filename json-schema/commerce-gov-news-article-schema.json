@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/us-department-of-commerce/main/json-schema/commerce-gov-news-article-schema.json",
+  "title": "Commerce.gov News Article",
+  "description": "A news article published on the US Department of Commerce website via the Commerce.gov Content API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the news article"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the news article"
+    },
+    "body": {
+      "type": "string",
+      "description": "Full HTML body content of the news article"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short summary or teaser text for the article"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date-time when the article was created"
+    },
+    "changed": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date-time when the article was last modified"
+    },
+    "url": {
+      "type": "string",
+      "description": "Relative URL path to the article on Commerce.gov"
+    },
+    "field_image": {
+      "type": "string",
+      "description": "URL of the featured image for the article"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Topic tags associated with the article"
+    }
+  },
+  "required": ["id", "title", "created"]
+}

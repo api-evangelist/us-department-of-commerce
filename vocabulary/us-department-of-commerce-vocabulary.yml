@@ -1,0 +1,190 @@
+vocabulary:
+  name: US Department of Commerce Vocabulary
+  description: >-
+    Domain vocabulary and taxonomy for the US Department of Commerce covering
+    economic data, trade, scientific research, and government data services.
+  version: '1.0'
+  created: '2026-05-03'
+  modified: '2026-05-03'
+
+domains:
+  - name: Economic Statistics
+    description: Data and metrics related to US economic performance
+    terms:
+      - term: Gross Domestic Product (GDP)
+        definition: The total monetary value of all goods and services produced in the US
+        source: Bureau of Economic Analysis
+        tags:
+          - Economic Data
+          - BEA
+      - term: Trade Balance
+        definition: The difference between the value of a country's exports and imports
+        source: International Trade Administration
+        tags:
+          - Trade
+          - International
+      - term: Consumer Price Index (CPI)
+        definition: A measure of the average change in prices paid by consumers
+        source: Bureau of Economic Analysis
+        tags:
+          - Economic Data
+          - Inflation
+      - term: National Accounts
+        definition: A set of government accounts that track economic activity across sectors
+        source: Bureau of Economic Analysis
+        tags:
+          - Economic Data
+          - BEA
+
+  - name: Trade and Commerce
+    description: International trade and domestic commerce concepts
+    terms:
+      - term: Export
+        definition: Goods or services produced in one country and sold to another
+        tags:
+          - Trade
+          - International
+      - term: Import
+        definition: Goods or services purchased from foreign producers
+        tags:
+          - Trade
+          - International
+      - term: Tariff
+        definition: A tax levied on imported goods
+        source: International Trade Administration
+        tags:
+          - Trade
+          - Policy
+      - term: Consolidated Screening List (CSL)
+        definition: >-
+          A list of parties for which the US Government maintains
+          restrictions on exports and trade
+        source: International Trade Administration
+        tags:
+          - Export Controls
+          - Compliance
+      - term: Trade Lead
+        definition: A business opportunity notice from foreign buyers seeking US goods
+        source: International Trade Administration
+        tags:
+          - Trade
+          - Business Development
+
+  - name: Census and Demographics
+    description: Population and demographic data concepts
+    terms:
+      - term: American Community Survey (ACS)
+        definition: An ongoing Census Bureau survey providing yearly demographic estimates
+        source: Census Bureau
+        tags:
+          - Census
+          - Demographics
+      - term: Decennial Census
+        definition: A complete count of the US population conducted every 10 years
+        source: Census Bureau
+        tags:
+          - Census
+          - Population
+      - term: FIPS Code
+        definition: Federal Information Processing Standards geographic identifier
+        source: Census Bureau
+        tags:
+          - Geographic
+          - Standards
+      - term: TIGER/Line
+        definition: >-
+          Census Bureau geographic database containing boundaries, roads,
+          and other geographic features
+        source: Census Bureau
+        tags:
+          - Geographic
+          - Mapping
+
+  - name: Science and Standards
+    description: Scientific research and measurement standards concepts
+    terms:
+      - term: NOAA (National Oceanic and Atmospheric Administration)
+        definition: Federal agency focused on the condition of the oceans, atmosphere, and coasts
+        tags:
+          - NOAA
+          - Weather
+          - Climate
+      - term: National Weather Service (NWS)
+        definition: Agency providing weather, water, and climate data, forecasts, and warnings
+        source: NOAA
+        tags:
+          - Weather
+          - Forecasting
+      - term: NIST (National Institute of Standards and Technology)
+        definition: Federal laboratory advancing measurement science and technology standards
+        tags:
+          - Standards
+          - Measurement
+          - Research
+      - term: Calibration
+        definition: The process of configuring an instrument to provide accurate results
+        source: NIST
+        tags:
+          - Standards
+          - Measurement
+
+  - name: API and Data Services
+    description: Concepts related to Commerce Department data services and APIs
+    terms:
+      - term: Open Data Portal
+        definition: >-
+          A platform providing public access to government datasets in
+          machine-readable formats
+        tags:
+          - Open Data
+          - API
+      - term: api.data.gov
+        definition: >-
+          A shared infrastructure provided by GSA for federal agency APIs,
+          handling API key management and rate limiting
+        tags:
+          - API
+          - Infrastructure
+          - Federal Government
+      - term: Data API
+        definition: >-
+          A programmatic interface for accessing structured government data
+          in machine-readable formats like JSON or XML
+        tags:
+          - API
+          - Open Data
+      - term: GeoJSON
+        definition: A format for encoding geographic data structures using JSON
+        tags:
+          - Geospatial
+          - Standards
+          - API
+
+api_properties:
+  content_types:
+    - News
+    - Blog Posts
+    - Images
+    - Economic Data
+    - Census Data
+    - Trade Data
+    - Weather Data
+    - Scientific Data
+
+  access_methods:
+    - REST API
+    - OGC Web Services
+    - SODA (Socrata Open Data API)
+    - Data Downloads (CSV, JSON, XML)
+    - FTP
+
+  authentication:
+    - API Key (via api.data.gov)
+    - No Authentication (public data)
+
+  data_formats:
+    - JSON
+    - XML
+    - CSV
+    - GeoJSON
+    - KML

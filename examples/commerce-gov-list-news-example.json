@@ -1,0 +1,52 @@
+{
+  "summary": "Example response for listing news articles from Commerce.gov API",
+  "request": {
+    "method": "GET",
+    "url": "https://www.commerce.gov/api/news?page=0&items_per_page=3&sort_by=created&sort_order=DESC"
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": [
+        {
+          "id": "12345",
+          "title": "Commerce Department Announces New Trade Partnership",
+          "body": "<p>The U.S. Department of Commerce announced today a new trade partnership initiative...</p>",
+          "summary": "The Commerce Department announced a new bilateral trade partnership to expand U.S. exports.",
+          "created": "2026-04-28T14:30:00Z",
+          "changed": "2026-04-28T16:00:00Z",
+          "url": "/news/2026/04/commerce-department-announces-new-trade-partnership",
+          "field_image": "https://www.commerce.gov/sites/default/files/trade-partnership.jpg",
+          "tags": ["Trade", "International", "Exports"]
+        },
+        {
+          "id": "12344",
+          "title": "Census Bureau Releases 2025 Population Estimates",
+          "body": "<p>The U.S. Census Bureau today released its annual population estimates...</p>",
+          "summary": "The Census Bureau released updated population estimates showing continued growth in Sunbelt states.",
+          "created": "2026-04-25T10:00:00Z",
+          "changed": "2026-04-25T10:00:00Z",
+          "url": "/news/2026/04/census-bureau-releases-2025-population-estimates",
+          "field_image": "https://www.commerce.gov/sites/default/files/census-2025.jpg",
+          "tags": ["Census", "Population", "Demographics"]
+        },
+        {
+          "id": "12343",
+          "title": "NOAA Issues Spring Outlook for Flooding Risk",
+          "body": "<p>The National Oceanic and Atmospheric Administration issued its spring outlook...</p>",
+          "summary": "NOAA's Spring Outlook indicates above-normal flood risk in the Mississippi River basin.",
+          "created": "2026-04-22T08:00:00Z",
+          "changed": "2026-04-22T09:15:00Z",
+          "url": "/news/2026/04/noaa-issues-spring-outlook-flooding-risk",
+          "field_image": "https://www.commerce.gov/sites/default/files/noaa-flooding.jpg",
+          "tags": ["NOAA", "Weather", "Flooding"]
+        }
+      ],
+      "meta": {
+        "total": 1847,
+        "page": 0,
+        "items_per_page": 3
+      }
+    }
+  }
+}

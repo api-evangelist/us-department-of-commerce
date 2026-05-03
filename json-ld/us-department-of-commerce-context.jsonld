@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "commerce": "https://www.commerce.gov/ns/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "gov": "http://www.w3.org/ns/org#",
+
+    "CommerceNewsArticle": "schema:NewsArticle",
+    "CommerceBlogPost": "schema:BlogPosting",
+    "CommerceImage": "schema:ImageObject",
+    "CommerceBureau": "schema:GovernmentOrganization",
+
+    "id": "@id",
+    "type": "@type",
+
+    "title": "schema:headline",
+    "body": "schema:articleBody",
+    "summary": "schema:abstract",
+    "created": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "changed": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "field_image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "tags": "schema:keywords",
+    "author": "schema:author",
+
+    "Department": {
+      "@id": "schema:GovernmentOrganization",
+      "name": "US Department of Commerce",
+      "url": "https://www.commerce.gov",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q11762",
+        "https://dbpedia.org/resource/United_States_Department_of_Commerce"
+      ]
+    },
+
+    "bureaus": {
+      "Census Bureau": "https://www.census.gov",
+      "Bureau of Economic Analysis": "https://www.bea.gov",
+      "International Trade Administration": "https://www.trade.gov",
+      "NOAA": "https://www.noaa.gov",
+      "NIST": "https://www.nist.gov",
+      "USPTO": "https://www.uspto.gov"
+    }
+  }
+}
