@@ -4,118 +4,48 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: US Department of Commerce
 providerId: us-department-of-commerce
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Commerce
   - Federal Government
   - Open Data
-  - Trade
-  - Economic Data
-  - Climate
-  - Standards
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the US Department of Commerce API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: U.S. Department of Commerce APIs that route through api.data.gov inherit its standard rate-limit policy of 1,000 requests/hour per API key on a rolling window, with 429 OVER_RATE_LIMIT responses. The DEMO_KEY has much stricter per-IP hourly and daily caps. Higher limits can be requested for production use.
+sources:
+  - https://api.data.gov/docs/developer-manual/
+  - https://api.data.gov/about/
 headers:
   limit: X-RateLimit-Limit
   remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Commerce.gov API
-      - US Census Bureau Data API
-      - Bureau of Economic Analysis API
-      - International Trade Administration Trade Data API
-      - NOAA Climate and Weather API
-      - NIST Data Discovery API
-      - Commerce Data Hub Open Data Portal API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+  - name: Standard API Key
+    scope: key
+    metric: requests_per_hour
     limit: 1000
-    timeFrame: month
-    applies:
-      - Commerce.gov API
-      - US Census Bureau Data API
-      - Bureau of Economic Analysis API
-      - International Trade Administration Trade Data API
-      - NOAA Climate and Weather API
-      - NIST Data Discovery API
-      - Commerce Data Hub Open Data Portal API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Commerce.gov API
-      - US Census Bureau Data API
-      - Bureau of Economic Analysis API
-      - International Trade Administration Trade Data API
-      - NOAA Climate and Weather API
-      - NIST Data Discovery API
-      - Commerce Data Hub Open Data Portal API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Commerce.gov API
-      - US Census Bureau Data API
-      - Bureau of Economic Analysis API
-      - International Trade Administration Trade Data API
-      - NOAA Climate and Weather API
-      - NIST Data Discovery API
-      - Commerce Data Hub Open Data Portal API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Commerce.gov API
-      - US Census Bureau Data API
-      - Bureau of Economic Analysis API
-      - International Trade Administration Trade Data API
-      - NOAA Climate and Weather API
-      - NIST Data Discovery API
-      - Commerce Data Hub Open Data Portal API
+    timeFrame: hour
+    notes: Rolling-hour window; 429 with error code OVER_RATE_LIMIT when exceeded; clears as the oldest requests age out.
+  - name: DEMO_KEY (per IP, hourly)
+    scope: IP
+    metric: requests_per_hour
+    limit: 30
+    timeFrame: hour
+    notes: Demonstration key only; intended for testing.
+  - name: DEMO_KEY (per IP, daily)
+    scope: IP
+    metric: requests_per_day
+    limit: 50
+    timeFrame: day
+    notes: Demonstration key only; daily ceiling on top of the hourly cap.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Rolling-Hour Window
+    description: Limits are evaluated as a rolling one-hour window per API key; blocks lift automatically as older requests age out.
+  - name: Higher Limit Request
+    description: Production users can contact api.data.gov to request higher per-key limits when a sustained 1,000 req/hr cap is insufficient.
+  - name: Error Body
+    description: Throttled responses return HTTP 429 with an error code of OVER_RATE_LIMIT; clients should honor the rate-limit headers and back off rather than retry immediately.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
