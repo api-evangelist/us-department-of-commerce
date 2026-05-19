@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commerce.gov API — News
+  description: 'Commerce.gov API — News. 2 operations. Lead operation: List News Articles. Self-contained Naftiko capability
+    covering one Us Department Of Commerce business surface.'
+  tags:
+  - Us Department Of Commerce
+  - News
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    US_DEPARTMENT_OF_COMMERCE_API_KEY: US_DEPARTMENT_OF_COMMERCE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commerce-gov-news
+    baseUri: https://www.commerce.gov
+    description: Commerce.gov API — News business capability. Self-contained, no shared references.
+    resources:
+    - name: api-news
+      path: /api/news
+      operations:
+      - name: listnews
+        method: GET
+        description: List News Articles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination
+        - name: items_per_page
+          in: query
+          type: integer
+          description: Number of items to return per page
+        - name: sort_by
+          in: query
+          type: string
+          description: Field to sort results by
+        - name: sort_order
+          in: query
+          type: string
+          description: Sort direction
+    - name: api-news-id
+      path: /api/news/{id}
+      operations:
+      - name: getnewsarticle
+        method: GET
+        description: Get News Article
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Unique identifier of the news article
+          required: true
+  exposes:
+  - type: rest
+    namespace: commerce-gov-news-rest
+    port: 8080
+    description: REST adapter for Commerce.gov API — News. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/news
+      name: api-news
+      description: REST surface for api-news.
+      operations:
+      - method: GET
+        name: listnews
+        description: List News Articles
+        call: commerce-gov-news.listnews
+        with:
+          page: rest.page
+          items_per_page: rest.items_per_page
+          sort_by: rest.sort_by
+          sort_order: rest.sort_order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/news/{id}
+      name: api-news-id
+      description: REST surface for api-news-id.
+      operations:
+      - method: GET
+        name: getnewsarticle
+        description: Get News Article
+        call: commerce-gov-news.getnewsarticle
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commerce-gov-news-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commerce.gov API — News. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-news-articles
+      description: List News Articles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-gov-news.listnews
+      with:
+        page: tools.page
+        items_per_page: tools.items_per_page
+        sort_by: tools.sort_by
+        sort_order: tools.sort_order
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-news-article
+      description: Get News Article
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-gov-news.getnewsarticle
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
