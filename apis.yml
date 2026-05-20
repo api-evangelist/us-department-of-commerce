@@ -1,5 +1,10 @@
 aid: us-department-of-commerce
 url: https://raw.githubusercontent.com/api-evangelist/us-department-of-commerce/refs/heads/main/apis.yml
+common:
+  - type: GitHubOrganization
+    url: https://github.com/commercegov
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/u-s-department-of-commerce
 apis:
 - aid: us-department-of-commerce:commercegov-api
   name: Commerce.gov API
