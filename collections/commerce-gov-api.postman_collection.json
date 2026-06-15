@@ -1,0 +1,767 @@
+{
+  "item": [
+    {
+      "id": "b100e461-1fb2-41bb-8583-33dd54f21131",
+      "name": "News",
+      "description": {
+        "content": "News articles published on Commerce.gov",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33e8f2ad-be38-41e4-85cb-60c5167573f2",
+          "name": "List News Articles",
+          "request": {
+            "name": "List News Articles",
+            "description": {
+              "content": "Returns a paginated list of news articles published on Commerce.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "items_per_page",
+                  "value": "10",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Field to sort results by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "DESC",
+                  "description": "Sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5e0548d-fda0-4959-89f8-05fdb1a82484",
+              "name": "A list of news articles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"2023-04-24T05:26:33.781Z\",\n      \"changed\": \"1956-03-26T21:32:16.320Z\",\n      \"url\": \"string\",\n      \"field_image\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"1991-07-13T20:55:16.025Z\",\n      \"changed\": \"1963-09-11T13:36:32.422Z\",\n      \"url\": \"string\",\n      \"field_image\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"total\": 9250,\n    \"page\": 7973,\n    \"items_per_page\": 9535\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a23feaca-cdc5-42da-9800-11f9cdf810ad",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37e2a67f-5f6a-49e4-9e7a-b20da85d4c58",
+          "name": "Get News Article",
+          "request": {
+            "name": "Get News Article",
+            "description": {
+              "content": "Returns a single news article by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "news",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the news article"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e05433b-9db8-40ce-a576-b2ead9e2fa8a",
+              "name": "A news article",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the news article"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"body\": \"string\",\n  \"summary\": \"string\",\n  \"created\": \"1972-01-09T21:27:33.661Z\",\n  \"changed\": \"2008-05-26T18:36:14.255Z\",\n  \"url\": \"string\",\n  \"field_image\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a56dd61-24e2-4477-aea7-f4c8ce8bd853",
+              "name": "Article not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the news article"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eedd050e-c014-4c90-ae68-d471680aa579",
+      "name": "Blogs",
+      "description": {
+        "content": "Blog posts published on Commerce.gov",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b12350b-f714-4a2f-a8b8-867172a059bb",
+          "name": "List Blog Posts",
+          "request": {
+            "name": "List Blog Posts",
+            "description": {
+              "content": "Returns a paginated list of blog posts published on Commerce.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "items_per_page",
+                  "value": "10",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Field to sort results by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "DESC",
+                  "description": "Sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fceba05a-710b-4186-887f-d6158497c786",
+              "name": "A list of blog posts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"1994-04-27T10:09:42.927Z\",\n      \"changed\": \"2015-11-06T23:43:03.791Z\",\n      \"url\": \"string\",\n      \"author\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"2022-12-28T01:13:08.539Z\",\n      \"changed\": \"1993-04-25T05:18:48.120Z\",\n      \"url\": \"string\",\n      \"author\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"total\": 6004,\n    \"page\": 9098,\n    \"items_per_page\": 9104\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50e0c118-9377-4af0-8b74-85c5d4f488e4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6012b2a-ec60-4d2f-81a4-b2ae9b84272e",
+          "name": "Get Blog Post",
+          "request": {
+            "name": "Get Blog Post",
+            "description": {
+              "content": "Returns a single blog post by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "blog",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the blog post"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b66dd318-ca9f-4108-80da-1ca1092e22f5",
+              "name": "A blog post",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blog",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the blog post"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"body\": \"string\",\n  \"summary\": \"string\",\n  \"created\": \"1979-06-25T11:19:48.808Z\",\n  \"changed\": \"1952-06-07T06:56:28.496Z\",\n  \"url\": \"string\",\n  \"author\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb7da1cd-c372-44ee-891a-4d8c720d4073",
+              "name": "Blog post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "blog",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the blog post"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9ec43b6e-4b61-4c56-8c48-1e21b0734057",
+      "name": "Images",
+      "description": {
+        "content": "Images published on Commerce.gov",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e55a509f-634d-472e-a698-f0f4b8c61a9b",
+          "name": "List Images",
+          "request": {
+            "name": "List Images",
+            "description": {
+              "content": "Returns a paginated list of images published on Commerce.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "items_per_page",
+                  "value": "10",
+                  "description": "Number of items to return per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ca31d26-8802-44c2-a8ab-932ab0fd92d0",
+              "name": "A list of images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\",\n      \"created\": \"1988-12-27T13:35:11.612Z\",\n      \"changed\": \"2005-12-18T09:12:15.548Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\",\n      \"created\": \"1977-02-05T08:28:32.761Z\",\n      \"changed\": \"1989-09-28T17:46:19.491Z\"\n    }\n  ],\n  \"meta\": {\n    \"total\": 2606,\n    \"page\": 2277,\n    \"items_per_page\": 7487\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c4947b8-4b72-4d05-bd09-1e3fb649c330",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.commerce.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e776d2a7-b8c3-4223-bc83-e80b9f339448",
+    "name": "Commerce.gov API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Commerce.gov API provides programmatic access to news and blog content published on the Commerce.gov website. Version 2.0 introduced a complete rewrite to reflect the redesign of the Commerce.gov D8 website, supporting news, blogs, and image endpoints. Response fields are preserved for backward compatibility.",
+      "type": "text/plain"
+    }
+  }
+}
