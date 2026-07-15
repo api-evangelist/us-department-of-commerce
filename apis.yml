@@ -1,6 +1,8 @@
 aid: us-department-of-commerce
 url: https://raw.githubusercontent.com/api-evangelist/us-department-of-commerce/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/us-department-of-commerce-agentic-access.yml
   - type: DomainSecurity
     url: security/us-department-of-commerce-domain-security.yml
   - type: GitHubOrganization
