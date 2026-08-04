@@ -1,0 +1,335 @@
+openapi: 3.0.3
+info:
+  title: Commerce.gov API
+  description: >-
+    The Commerce.gov API provides programmatic access to news and blog content
+    published on the Commerce.gov website. Version 2.0 introduced a complete
+    rewrite to reflect the redesign of the Commerce.gov D8 website, supporting
+    news, blogs, and image endpoints. Response fields are preserved for backward
+    compatibility.
+  version: '2.0'
+  contact:
+    url: https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api
+  license:
+    name: US Government Work
+    url: https://www.usa.gov/government-works
+servers:
+  - url: https://www.commerce.gov
+    description: Commerce.gov Production Server
+tags:
+  - name: News
+    description: News articles published on Commerce.gov
+  - name: Blogs
+    description: Blog posts published on Commerce.gov
+  - name: Images
+    description: Images published on Commerce.gov
+paths:
+  /api/news:
+    get:
+      operationId: listNews
+      summary: List News Articles
+      description: Returns a paginated list of news articles published on Commerce.gov.
+      tags:
+        - News
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: items_per_page
+          in: query
+          description: Number of items to return per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+        - name: sort_by
+          in: query
+          description: Field to sort results by
+          required: false
+          schema:
+            type: string
+            enum:
+              - created
+              - changed
+        - name: sort_order
+          in: query
+          description: Sort direction
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+            default: DESC
+      responses:
+        '200':
+          description: A list of news articles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NewsArticle'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '400':
+          description: Bad request
+  /api/news/{id}:
+    get:
+      operationId: getNewsArticle
+      summary: Get News Article
+      description: Returns a single news article by ID.
+      tags:
+        - News
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier of the news article
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A news article
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsArticle'
+        '404':
+          description: Article not found
+  /api/blog:
+    get:
+      operationId: listBlogs
+      summary: List Blog Posts
+      description: Returns a paginated list of blog posts published on Commerce.gov.
+      tags:
+        - Blogs
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: items_per_page
+          in: query
+          description: Number of items to return per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+        - name: sort_by
+          in: query
+          description: Field to sort results by
+          required: false
+          schema:
+            type: string
+            enum:
+              - created
+              - changed
+        - name: sort_order
+          in: query
+          description: Sort direction
+          required: false
+          schema:
+            type: string
+            enum:
+              - ASC
+              - DESC
+            default: DESC
+      responses:
+        '200':
+          description: A list of blog posts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BlogPost'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '400':
+          description: Bad request
+  /api/blog/{id}:
+    get:
+      operationId: getBlogPost
+      summary: Get Blog Post
+      description: Returns a single blog post by ID.
+      tags:
+        - Blogs
+      parameters:
+        - name: id
+          in: path
+          description: Unique identifier of the blog post
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A blog post
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPost'
+        '404':
+          description: Blog post not found
+  /api/image:
+    get:
+      operationId: listImages
+      summary: List Images
+      description: Returns a paginated list of images published on Commerce.gov.
+      tags:
+        - Images
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: items_per_page
+          in: query
+          description: Number of items to return per page
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+      responses:
+        '200':
+          description: A list of images
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Image'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '400':
+          description: Bad request
+components:
+  schemas:
+    NewsArticle:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the news article
+        title:
+          type: string
+          description: Title of the news article
+        body:
+          type: string
+          description: Full HTML body content of the article
+        summary:
+          type: string
+          description: Short summary of the article
+        created:
+          type: string
+          format: date-time
+          description: Date and time the article was created
+        changed:
+          type: string
+          format: date-time
+          description: Date and time the article was last modified
+        url:
+          type: string
+          description: Relative URL path to the article on Commerce.gov
+        field_image:
+          type: string
+          description: URL of the featured image
+        tags:
+          type: array
+          items:
+            type: string
+          description: Topic tags associated with the article
+    BlogPost:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the blog post
+        title:
+          type: string
+          description: Title of the blog post
+        body:
+          type: string
+          description: Full HTML body content of the blog post
+        summary:
+          type: string
+          description: Short summary of the blog post
+        created:
+          type: string
+          format: date-time
+          description: Date and time the blog post was created
+        changed:
+          type: string
+          format: date-time
+          description: Date and time the blog post was last modified
+        url:
+          type: string
+          description: Relative URL path to the blog post on Commerce.gov
+        author:
+          type: string
+          description: Author of the blog post
+        tags:
+          type: array
+          items:
+            type: string
+          description: Topic tags associated with the blog post
+    Image:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the image
+        title:
+          type: string
+          description: Title or alt text of the image
+        url:
+          type: string
+          description: URL to the image file
+        created:
+          type: string
+          format: date-time
+          description: Date and time the image was uploaded
+        changed:
+          type: string
+          format: date-time
+          description: Date and time the image was last modified
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        items_per_page:
+          type: integer
+          description: Number of items per page

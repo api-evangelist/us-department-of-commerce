@@ -1,0 +1,18 @@
+{
+  "provider": "us-department-of-commerce",
+  "sources": [
+    "us-department-of-commerce-blogs-api-openapi.yml",
+    "us-department-of-commerce-images-api-openapi.yml",
+    "us-department-of-commerce-news-api-openapi.yml"
+  ],
+  "outputs": [
+    "us-department-of-commerce-blogs-api-openapi.yml",
+    "us-department-of-commerce-images-api-openapi.yml",
+    "us-department-of-commerce-news-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
