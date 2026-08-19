@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce.gov Blogs Images API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.commerce.gov/api/image",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "items_per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of images published on Commerce.gov."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

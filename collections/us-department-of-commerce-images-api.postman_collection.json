@@ -1,0 +1,165 @@
+{
+  "item": [
+    {
+      "id": "b714149f-8daf-4303-87db-4a299c5f1be3",
+      "name": "Images",
+      "description": {
+        "content": "Images published on Commerce.gov",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01a0f12c-946a-4ba3-a933-8a4d7a03f1af",
+          "name": "List Images",
+          "request": {
+            "name": "List Images",
+            "description": {
+              "content": "Returns a paginated list of images published on Commerce.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "items_per_page",
+                  "value": "10",
+                  "description": "Number of items to return per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36b94d61-dd39-4613-aacc-420cda813dca",
+              "name": "A list of images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\",\n      \"created\": \"1986-11-05T03:32:44.602Z\",\n      \"changed\": \"2024-02-15T08:36:02.742Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"string\",\n      \"created\": \"1982-06-30T07:51:23.303Z\",\n      \"changed\": \"1999-03-12T23:57:04.392Z\"\n    }\n  ],\n  \"meta\": {\n    \"total\": 7298,\n    \"page\": 3550,\n    \"items_per_page\": 9362\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "213d93df-5e27-4931-aa01-47c15d1088a1",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.commerce.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "329b1054-6c3e-439b-ba0f-58101ae27ca2",
+    "name": "Commerce.gov Blogs Images API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Commerce.gov API provides programmatic access to news and blog content published on the Commerce.gov website. Version 2.0 introduced a complete rewrite to reflect the redesign of the Commerce.gov D8 website, supporting news, blogs, and image endpoints. Response fields are preserved for backward compatibility.",
+      "type": "text/plain"
+    }
+  }
+}

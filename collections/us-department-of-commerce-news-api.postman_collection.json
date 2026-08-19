@@ -1,0 +1,322 @@
+{
+  "item": [
+    {
+      "id": "8c43a4ef-725b-47b6-8135-3e77fadc9b36",
+      "name": "News",
+      "description": {
+        "content": "News articles published on Commerce.gov",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ba2cad3-09cf-4aec-aa6b-c79d6d794b21",
+          "name": "List News Articles",
+          "request": {
+            "name": "List News Articles",
+            "description": {
+              "content": "Returns a paginated list of news articles published on Commerce.gov.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "items_per_page",
+                  "value": "10",
+                  "description": "Number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "Field to sort results by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_order",
+                  "value": "DESC",
+                  "description": "Sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5af184d9-7225-421c-9e5f-9cd7846e5f83",
+              "name": "A list of news articles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"1997-10-20T01:47:06.021Z\",\n      \"changed\": \"2018-08-21T00:18:15.391Z\",\n      \"url\": \"string\",\n      \"field_image\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"body\": \"string\",\n      \"summary\": \"string\",\n      \"created\": \"1951-09-22T00:02:47.577Z\",\n      \"changed\": \"1968-10-28T02:55:22.880Z\",\n      \"url\": \"string\",\n      \"field_image\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"total\": 9743,\n    \"page\": 9607,\n    \"items_per_page\": 1791\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0d12599-d4be-44aa-b8b2-89410379351a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "items_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_order",
+                      "value": "DESC"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fff8880d-4d2c-4b29-963b-ec2ded5ba5c8",
+          "name": "Get News Article",
+          "request": {
+            "name": "Get News Article",
+            "description": {
+              "content": "Returns a single news article by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "news",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier of the news article"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45131542-1c69-4eb0-99e9-1ea0ee2e0d73",
+              "name": "A news article",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the news article"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"body\": \"string\",\n  \"summary\": \"string\",\n  \"created\": \"1976-02-14T08:10:33.710Z\",\n  \"changed\": \"1997-10-10T06:32:03.244Z\",\n  \"url\": \"string\",\n  \"field_image\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "141ce175-7186-412b-9ef5-ad3133125788",
+              "name": "Article not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "news",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier of the news article"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.commerce.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c55f8ca0-c887-437b-b5ff-4685c15e5c9b",
+    "name": "Commerce.gov Blogs News API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Commerce.gov API provides programmatic access to news and blog content published on the Commerce.gov website. Version 2.0 introduced a complete rewrite to reflect the redesign of the Commerce.gov D8 website, supporting news, blogs, and image endpoints. Response fields are preserved for backward compatibility.",
+      "type": "text/plain"
+    }
+  }
+}
