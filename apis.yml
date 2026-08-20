@@ -16,6 +16,11 @@ apis:
   - Census
   - Demographics
   - Economic Data
+  - Federal-Government
+  tags_raw:
+  - Census
+  - Demographics
+  - Economic Data
   - Federal Government
   humanURL: https://www.census.gov/data/developers/data-sets.html
   properties:
@@ -30,6 +35,11 @@ apis:
 - aid: us-department-of-commerce:bea-api
   name: Bureau of Economic Analysis API
   tags:
+  - Economic Data
+  - GDP
+  - National Accounts
+  - Federal-Government
+  tags_raw:
   - Economic Data
   - GDP
   - National Accounts
@@ -48,6 +58,11 @@ apis:
   name: International Trade Administration Trade Data API
   tags:
   - International Trade
+  - Export
+  - Trade Leads
+  - Federal-Government
+  tags_raw:
+  - International Trade
   - Exports
   - Trade Leads
   - Federal Government
@@ -63,6 +78,11 @@ apis:
 - aid: us-department-of-commerce:noaa-api
   name: NOAA Climate and Weather API
   tags:
+  - Weather
+  - Climate
+  - Environment
+  - Federal-Government
+  tags_raw:
   - Weather
   - Climate
   - Environment
@@ -83,6 +103,11 @@ apis:
   - Research Data
   - Standards
   - Materials Science
+  - Federal-Government
+  tags_raw:
+  - Research Data
+  - Standards
+  - Materials Science
   - Federal Government
   humanURL: https://data.nist.gov/pdr/lps/
   properties:
@@ -99,6 +124,10 @@ apis:
   tags:
   - Open Data
   - Commerce
+  - Federal-Government
+  tags_raw:
+  - Open Data
+  - Commerce
   - Federal Government
   humanURL: https://data.commerce.gov/open-data-portal-odp-api-version-23
   properties:
@@ -113,6 +142,8 @@ apis:
   description: Blog posts published on Commerce.gov
   humanURL: https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api
   tags:
+  - Blog
+  tags_raw:
   - Blogs
   properties:
   - type: OpenAPI
@@ -124,6 +155,8 @@ apis:
   description: Images published on Commerce.gov
   humanURL: https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
@@ -143,6 +176,14 @@ apis:
     url: https://www.commerce.gov/data-and-reports/developer-resources/commercegov-api
 name: US Department of Commerce
 tags:
+  - Commerce
+  - Federal-Government
+  - Open Data
+  - Trade
+  - Economic Data
+  - Climate
+  - Standards
+tags_raw:
   - Commerce
   - Federal Government
   - Open Data
