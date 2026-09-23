@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Commerce.gov Blogs Images API
+  title: Commerce.gov Images API
   description: The Commerce.gov API provides programmatic access to news and blog content published on the Commerce.gov website. Version 2.0 introduced a complete rewrite to reflect the redesign of the Commerce.gov D8 website, supporting news, blogs, and image endpoints. Response fields are preserved for backward compatibility.
   version: '2.0'
   contact:
@@ -58,6 +58,18 @@ paths:
           description: Bad request
 components:
   schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        items_per_page:
+          type: integer
+          description: Number of items per page
     Image:
       type: object
       properties:
@@ -78,15 +90,3 @@ components:
           type: string
           format: date-time
           description: Date and time the image was last modified
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items available
-        page:
-          type: integer
-          description: Current page number
-        items_per_page:
-          type: integer
-          description: Number of items per page

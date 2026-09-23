@@ -1,9 +1,7 @@
 {
   "provider": "us-department-of-commerce",
   "sources": [
-    "us-department-of-commerce-blogs-api-openapi.yml",
-    "us-department-of-commerce-images-api-openapi.yml",
-    "us-department-of-commerce-news-api-openapi.yml"
+    "_original/commerce-gov-api-openapi.yml"
   ],
   "outputs": [
     "us-department-of-commerce-blogs-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "commerce-gov-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "us-department-of-commerce-blogs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-department-of-commerce-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "us-department-of-commerce-news-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
