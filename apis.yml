@@ -16,12 +16,13 @@ apis:
   - Census
   - Demographics
   - Economic Data
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - Census
   - Demographics
   - Economic Data
   - Federal Government
+  - Federal-Government
   humanURL: https://www.census.gov/data/developers/data-sets.html
   properties:
   - url: https://www.census.gov/data/developers/data-sets.html
@@ -38,12 +39,13 @@ apis:
   - Economic Data
   - GDP
   - National Accounts
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - Economic Data
   - GDP
   - National Accounts
   - Federal Government
+  - Federal-Government
   humanURL: https://apps.bea.gov/API/signup/
   properties:
   - url: https://apps.bea.gov/API/signup/
@@ -60,12 +62,13 @@ apis:
   - International Trade
   - Export
   - Trade Leads
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - International Trade
   - Exports
   - Trade Leads
   - Federal Government
+  - Federal-Government
   humanURL: https://developer.trade.gov/
   properties:
   - url: https://developer.trade.gov/
@@ -81,12 +84,13 @@ apis:
   - Weather
   - Climate
   - Environment
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - Weather
   - Climate
   - Environment
   - Federal Government
+  - Federal-Government
   humanURL: https://www.ncdc.noaa.gov/cdo-web/webservices/v2
   properties:
   - url: https://www.ncdc.noaa.gov/cdo-web/webservices/v2
@@ -103,12 +107,13 @@ apis:
   - Research Data
   - Standards
   - Materials Science
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - Research Data
   - Standards
   - Materials Science
   - Federal Government
+  - Federal-Government
   humanURL: https://data.nist.gov/pdr/lps/
   properties:
   - url: https://data.nist.gov/pdr/lps/
@@ -124,11 +129,12 @@ apis:
   tags:
   - Open Data
   - Commerce
-  - Federal-Government
+  - Federal Government
   tags_raw:
   - Open Data
   - Commerce
   - Federal Government
+  - Federal-Government
   humanURL: https://data.commerce.gov/open-data-portal-odp-api-version-23
   properties:
   - url: https://data.commerce.gov/open-data-portal-odp-api-version-23
@@ -177,7 +183,7 @@ apis:
 name: US Department of Commerce
 tags:
   - Commerce
-  - Federal-Government
+  - Federal Government
   - Open Data
   - Trade
   - Economic Data
@@ -191,6 +197,7 @@ tags_raw:
   - Economic Data
   - Climate
   - Standards
+  - Federal-Government
 kind: contract
 deliveryModel:
   model: unknown

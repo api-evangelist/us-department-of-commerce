@@ -100,18 +100,6 @@ paths:
           description: Blog post not found
 components:
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items available
-        page:
-          type: integer
-          description: Current page number
-        items_per_page:
-          type: integer
-          description: Number of items per page
     BlogPost:
       type: object
       properties:
@@ -146,3 +134,15 @@ components:
           items:
             type: string
           description: Topic tags associated with the blog post
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        items_per_page:
+          type: integer
+          description: Number of items per page
