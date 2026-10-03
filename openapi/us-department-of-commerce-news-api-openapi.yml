@@ -100,18 +100,6 @@ paths:
           description: Article not found
 components:
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items available
-        page:
-          type: integer
-          description: Current page number
-        items_per_page:
-          type: integer
-          description: Number of items per page
     NewsArticle:
       type: object
       properties:
@@ -146,3 +134,15 @@ components:
           items:
             type: string
           description: Topic tags associated with the article
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        items_per_page:
+          type: integer
+          description: Number of items per page
