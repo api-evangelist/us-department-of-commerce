@@ -1,6 +1,12 @@
 aid: us-department-of-commerce
 url: https://raw.githubusercontent.com/api-evangelist/us-department-of-commerce/refs/heads/main/apis.yml
 common:
+  - type: Plans
+    url: plans/us-department-of-commerce-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/us-department-of-commerce-rate-limits.yml
+  - type: FinOps
+    url: finops/us-department-of-commerce-finops.yml
   - type: AgenticAccess
     url: agentic-access/us-department-of-commerce-agentic-access.yml
   - type: DomainSecurity
