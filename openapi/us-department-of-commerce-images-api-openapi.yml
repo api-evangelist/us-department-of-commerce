@@ -58,18 +58,6 @@ paths:
           description: Bad request
 components:
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of items available
-        page:
-          type: integer
-          description: Current page number
-        items_per_page:
-          type: integer
-          description: Number of items per page
     Image:
       type: object
       properties:
@@ -90,3 +78,15 @@ components:
           type: string
           format: date-time
           description: Date and time the image was last modified
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of items available
+        page:
+          type: integer
+          description: Current page number
+        items_per_page:
+          type: integer
+          description: Number of items per page
